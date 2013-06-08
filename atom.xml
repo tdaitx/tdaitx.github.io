@@ -4,7 +4,7 @@
   <title><![CDATA[WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-07T22:29:31-03:00</updated>
+  <updated>2013-06-07T22:50:45-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -54,7 +54,7 @@
 
 <h3>x264</h3>
 
-<p>On a static screen, x264 gave me the lowest bandwidth, using around 30 kbit/s, but it also got over 2.5 mbit/s with fast motion content - eg. playing a video. As expected, CPU usage is also higher than any other encoder. Latency can be kept as low as 3 seconds for UDP and 5 seconds for HTTP by using &#8220;tune=zerolatency&#8221;. Without zerolatency x264 encoding quality gets much better, but I experienced delays around 10~20 seconds.</p>
+<p>On a static screen, x264 gave me the lowest bandwidth, using around 30 kbit/s, but it also got over 2.5 mbit/s with fast motion content &ndash; eg. playing a video. As expected, CPU usage is also higher than any other encoder. Latency can be kept as low as 3 seconds for UDP and 5 seconds for HTTP by using &ldquo;tune=zerolatency&rdquo;. Without zerolatency x264 encoding quality gets much better, but I experienced delays around 10~20 seconds.</p>
 
 <h3>mp4v, mp2v, and mp1v</h3>
 
@@ -102,7 +102,7 @@
 
 <h2>Audio means higher latency</h2>
 
-<p>Unless you can live with a higher latency, it is highly recommended to disable audio. The same 3 second delay was way over 10 seconds with audio enabled - all other settings equal. Only enable it if you can live with the higher latency that it introduces.</p>
+<p>Unless you can live with a higher latency, it is highly recommended to disable audio. The same 3 second delay was way over 10 seconds with audio enabled &ndash; all other settings equal. Only enable it if you can live with the higher latency that it introduces.</p>
 
 <h2>Comparison with VNC</h2>
 
@@ -112,7 +112,7 @@
 VNC session latency was in the order of milliseconds while VLC was on the order of seconds</p>
 
 <p><strong>Bandwidth:</strong>
-VNC used as much as 32 mbit/s for bandwidth in high content settings and around 30 kbits/s on static content. VLC streaming never got past 5 mbit/s (remember it was constrained to 5 fps), but static content might take 1 mbit/s or more depending on the codec - there&#8217;s the option to use UDP multicast if the network allows for it.</p>
+VNC used as much as 32 mbit/s for bandwidth in high content settings and around 30 kbits/s on static content. VLC streaming never got past 5 mbit/s (remember it was constrained to 5 fps), but static content might take 1 mbit/s or more depending on the codec &ndash; there&rsquo;s the option to use UDP multicast if the network allows for it.</p>
 
 <p><strong>Content quality:</strong>
 VNC has the highest quality. VLC quality is highly dependent on the coded, from the highest quality to lowest: x264, mp4v, mp2v, and mp1v.</p>
@@ -132,7 +132,7 @@ VNC allows connection encryption and VLC allows <a href="https://www.videolan.or
 
 <p>Using HTTP also enables any browser (with the proper plugin) to access the presentation as well. VNC also supports browser, either using the java plugin (I find that a hassle) or a HTML5 client such as <a href="http://kanaka.github.io/noVNC/%E2%80%8E" title="HTML5 VNC Client">noVNC</a> (requires server support or a WebSocket proxy).</p>
 
-<p>Remember that VNC can use better compression algorithms and both server and client can limit the color depth to limit bandwidth usage. This means each client can be configured in a way to make better use of the available network - of course, the server must be able to support the client settings.</p>
+<p>Remember that VNC can use better compression algorithms and both server and client can limit the color depth to limit bandwidth usage. This means each client can be configured in a way to make better use of the available network &ndash; of course, the server must be able to support the client settings.</p>
 
 <p>Those tests were all run in a private network. I intent to do some testing over slower networks to compare both quality and reliability of VNC sharing VS VLC streamming, keep posted.</p>
 
@@ -140,7 +140,7 @@ VNC allows connection encryption and VLC allows <a href="https://www.videolan.or
 
 <h4>References</h4>
 
-<p>I first found about desktop streaming using VLC in <a href="http://blog.nostdal.org/2012/10/vlc-h264-desktop-and-audio-recording-or.html" title="VLC H264 desktop and audio recording or streaming via HTTP on Linux">lnostdal&#8217;s blog</a>. From there I learned about the various streaming options in the <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">VLC streaming howto</a>. The <a href="https://www.videolan.org/streaming-features.html" title="Streaming features list: video, audio, muxing, transport">VLC streaming features</a> described both available and valid combinations of video, audio, muxing type, and transport method. Codec names and a simple transcoding example are described at <a href="http://wiki.videolan.org/Codec" title="VLC codecs list">VLC codecs wiki page</a>. I found everything I needed about the x264 codec options at the <a href="http://mewiki.project357.com/wiki/X264_Settings" title="a comprehensive guide to options in x264">x264 settings wiki page</a>.</p>
+<p>I first found about desktop streaming using VLC in <a href="http://blog.nostdal.org/2012/10/vlc-h264-desktop-and-audio-recording-or.html" title="VLC H264 desktop and audio recording or streaming via HTTP on Linux">lnostdal&rsquo;s blog</a>. From there I learned about the various streaming options in the <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">VLC streaming howto</a>. The <a href="https://www.videolan.org/streaming-features.html" title="Streaming features list: video, audio, muxing, transport">VLC streaming features</a> described both available and valid combinations of video, audio, muxing type, and transport method. Codec names and a simple transcoding example are described at <a href="http://wiki.videolan.org/Codec" title="VLC codecs list">VLC codecs wiki page</a>. I found everything I needed about the x264 codec options at the <a href="http://mewiki.project357.com/wiki/X264_Settings" title="a comprehensive guide to options in x264">x264 settings wiki page</a>.</p>
 
 <p><a href="https://plus.google.com/109931565080058432516/posts/hrUGwzJ6UNt">My original post on Google+</a> and a nice guide for <a href="http://grok.lsu.edu/article.aspx?articleid=14625">desktop streaming using VLC GUI wizard</a> posted not long ago.</p>
 ]]></content>
