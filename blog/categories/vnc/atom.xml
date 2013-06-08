@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VNC | WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/blog/categories/vnc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-07T23:27:38-03:00</updated>
+  <updated>2013-06-07T23:38:33-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -35,6 +35,9 @@
 <p>While investigating ways to share my desktop for remote presentations I found out that VLC is able to stream my desktop. I figured out that it might be a good alternative to read-only VNC sessions for some settings and got into testing it in my local network. I also did a simple comparison of it against <a href="http://www.karlrunge.com/x11vnc/" title="x11vnc a VNC server for real X displays">x11vnc</a>.</p>
 
 <p>Now, some VLC setup.</p>
+
+<!-- more -->
+
 
 <h2>VLC client setup</h2>
 
