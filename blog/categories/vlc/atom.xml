@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[WAITWUT?!?]]></title>
-  <link href="http://www.waitwut.info/atom.xml" rel="self"/>
+  <title><![CDATA[Category: VLC | WAITWUT?!?]]></title>
+  <link href="http://www.waitwut.info/blog/categories/vlc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
   <updated>2013-06-07T22:29:31-03:00</updated>
   <id>http://www.waitwut.info/</id>
@@ -22,17 +22,13 @@
 
 <h2>tl;dr</h2>
 
-<p>On the server side execute the following for a HTTP streaming using x264 with no audio:</p>
+<p>On the server side execute the following for a HTTP streaming using x264 with no audio:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>On the client side watch the stream using:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc http://&lt;host>:8080/stream</span></code></pre></td></tr></table></div></figure>
-
+<p>On the client side watch the stream using:
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc http://&lt;host>:8080/stream</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>Motivation</h2>
 
@@ -54,7 +50,7 @@
 
 <h3>x264</h3>
 
-<p>On a static screen, x264 gave me the lowest bandwidth, using around 30 kbit/s, but it also got over 2.5 mbit/s with fast motion content - eg. playing a video. As expected, CPU usage is also higher than any other encoder. Latency can be kept as low as 3 seconds for UDP and 5 seconds for HTTP by using &#8220;tune=zerolatency&#8221;. Without zerolatency x264 encoding quality gets much better, but I experienced delays around 10~20 seconds.</p>
+<p>On a static screen, x264 gave me the lowest bandwidth, using around 30 kbit/s, but it also got over 2.5 mbit/s with fast motion content - eg. playing a video. As expected, CPU usage is also higher than any other encoder. Latency can be kept as low as 3 seconds for UDP and 5 seconds for HTTP by using "tune=zerolatency". Without zerolatency x264 encoding quality gets much better, but I experienced delays around 10~20 seconds.</p>
 
 <h3>mp4v, mp2v, and mp1v</h3>
 
@@ -66,39 +62,29 @@
 
 <h2>Server side x264 examples</h2>
 
-<p>HTTP streaming, x264, no audio</p>
+<p>HTTP streaming, x264, no audio
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
+<p>HTTP streaming, mp4v, no audio
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --sout "#transcode{vcodec=mp4v,vb=64,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-
-<p>HTTP streaming, mp4v, no audio</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --sout "#transcode{vcodec=mp4v,vb=64,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>UDP streaming, with audio (please do set a proper destination and port)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --input-slave=pulse:// --sout "#transcode{vcodec=mp4v,acodec=mp3,vb=64,ab=32,fps=5,audio-sync}:std{access=udp,mux=ts,dst=192.168.0.1:2345}"</span></code></pre></td></tr></table></div></figure>
-
+<p>UDP streaming, with audio (please do set a proper destination and port)
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --input-slave=pulse:// --sout "#transcode{vcodec=mp4v,acodec=mp3,vb=64,ab=32,fps=5,audio-sync}:std{access=udp,mux=ts,dst=192.168.0.1:2345}"</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>See more streaming and codec options on the <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">VLC streaming howto</a> and <a href="http://wiki.videolan.org/Codec" title="VLC codecs list">VLC codecs wiki page</a>.</p>
 
 <h2>Watching the stream</h2>
 
-<p>Watch a HTTP stream</p>
+<p>Watch a HTTP stream
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc http://&lt;host>:8080/stream</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc http://&lt;host>:8080/stream</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Watch a UDP stream</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc udp://@:2345</span></code></pre></td></tr></table></div></figure>
-
+<p>Watch a UDP stream
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc udp://@:2345</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>Audio means higher latency</h2>
 
@@ -112,7 +98,7 @@
 VNC session latency was in the order of milliseconds while VLC was on the order of seconds</p>
 
 <p><strong>Bandwidth:</strong>
-VNC used as much as 32 mbit/s for bandwidth in high content settings and around 30 kbits/s on static content. VLC streaming never got past 5 mbit/s (remember it was constrained to 5 fps), but static content might take 1 mbit/s or more depending on the codec - there&#8217;s the option to use UDP multicast if the network allows for it.</p>
+VNC used as much as 32 mbit/s for bandwidth in high content settings and around 30 kbits/s on static content. VLC streaming never got past 5 mbit/s (remember it was constrained to 5 fps), but static content might take 1 mbit/s or more depending on the codec - there's the option to use UDP multicast if the network allows for it.</p>
 
 <p><strong>Content quality:</strong>
 VNC has the highest quality. VLC quality is highly dependent on the coded, from the highest quality to lowest: x264, mp4v, mp2v, and mp1v.</p>
@@ -140,7 +126,7 @@ VNC allows connection encryption and VLC allows <a href="https://www.videolan.or
 
 <h4>References</h4>
 
-<p>I first found about desktop streaming using VLC in <a href="http://blog.nostdal.org/2012/10/vlc-h264-desktop-and-audio-recording-or.html" title="VLC H264 desktop and audio recording or streaming via HTTP on Linux">lnostdal&#8217;s blog</a>. From there I learned about the various streaming options in the <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">VLC streaming howto</a>. The <a href="https://www.videolan.org/streaming-features.html" title="Streaming features list: video, audio, muxing, transport">VLC streaming features</a> described both available and valid combinations of video, audio, muxing type, and transport method. Codec names and a simple transcoding example are described at <a href="http://wiki.videolan.org/Codec" title="VLC codecs list">VLC codecs wiki page</a>. I found everything I needed about the x264 codec options at the <a href="http://mewiki.project357.com/wiki/X264_Settings" title="a comprehensive guide to options in x264">x264 settings wiki page</a>.</p>
+<p>I first found about desktop streaming using VLC in <a href="http://blog.nostdal.org/2012/10/vlc-h264-desktop-and-audio-recording-or.html" title="VLC H264 desktop and audio recording or streaming via HTTP on Linux">lnostdal's blog</a>. From there I learned about the various streaming options in the <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">VLC streaming howto</a>. The <a href="https://www.videolan.org/streaming-features.html" title="Streaming features list: video, audio, muxing, transport">VLC streaming features</a> described both available and valid combinations of video, audio, muxing type, and transport method. Codec names and a simple transcoding example are described at <a href="http://wiki.videolan.org/Codec" title="VLC codecs list">VLC codecs wiki page</a>. I found everything I needed about the x264 codec options at the <a href="http://mewiki.project357.com/wiki/X264_Settings" title="a comprehensive guide to options in x264">x264 settings wiki page</a>.</p>
 
 <p><a href="https://plus.google.com/109931565080058432516/posts/hrUGwzJ6UNt">My original post on Google+</a> and a nice guide for <a href="http://grok.lsu.edu/article.aspx?articleid=14625">desktop streaming using VLC GUI wizard</a> posted not long ago.</p>
 ]]></content>
