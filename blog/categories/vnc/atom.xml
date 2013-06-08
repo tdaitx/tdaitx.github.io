@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VNC | WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/blog/categories/vnc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-08T02:30:52-03:00</updated>
+  <updated>2013-06-08T02:46:16-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -109,11 +109,11 @@ VNC has the highest quality. VLC quality is highly dependent on the coded, from 
 <p><strong>CPU usage:</strong>
 VNC kept CPU usage to a minimum. VLC depends on the selected codec, with x264 being the most demanding even when restrained to 5 fps.</p>
 
-<p><strong>Authentication:</strong>
-VNC allows for password and/or certificate authentication. VLC streaming provides no authentication.</p>
-
 <p><strong>Encryption:</strong>
 VNC allows connection encryption and VLC allows <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">streaming over HTTPS</a>.</p>
+
+<p><strong>Authentication:</strong>
+VNC allows for password and/or certificate authentication. VLC streaming provides <a href="https://www.videolan.org/doc/streaming-howto/en/ch03.html" title="VLC - Chapter 3: Advanced streaming using the command line">basic HTTP authentication</a> &ndash; it is highly recommended that HTTPS is enabled as well, otherwise the user and password will be sent without encryption.</p>
 
 <h2>Conclusion</h2>
 
