@@ -125,7 +125,7 @@ $ cvlc screen:// --screen-fps=25 --live-caching=10 --sout &hellip;">
 <p>For lowest CPU usage:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{preset=ultrafast,tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
 
 
 <p>On the client side run <code>vlc http://&lt;host&gt;:8080/stream</code></p>

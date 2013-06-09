@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VNC | WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/blog/categories/vnc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-09T13:35:45-03:00</updated>
+  <updated>2013-06-09T13:56:33-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -30,7 +30,7 @@
 
 <p>For lowest CPU usage:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=5 &mdash;live-caching=100 &mdash;sout &ldquo;#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=5 &mdash;live-caching=100 &mdash;sout &ldquo;#transcode{venc=x264{preset=ultrafast,tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>On the client side run <code>vlc http://&lt;host&gt;:8080/stream</code></p>
 
@@ -98,13 +98,13 @@ BTW, you might get a message from VLC complaining that UDP should be used with T
 
 <p>For lowest CPU usage, HTTP streaming with x264, no audio, and 5 fps did a great job. I got ~5 seconds latency with a client cache of 100 ms.
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=5 &mdash;live-caching=100 &mdash;sout &ldquo;#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=5 &mdash;live-caching=100 &mdash;sout &ldquo;#transcode{venc=x264{preset=ultrafast,tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <p>Or use mp4v
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=5 &mdash;sout &ldquo;#transcode{vcodec=mp4v,vb=64,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>Use UDP streaming to get an even lower latency with the same low CPU usage
+<p>Use UDP streaming to get an even lower latency (~3 secs) with the same low CPU usage
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=5 &mdash;sout &ldquo;#transcode{vcodec=mp4v,acodec=none,fps=5}:std{access=udp,mux=ts,dst=192.168.0.1:2345}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
@@ -129,7 +129,7 @@ BTW, you might get a message from VLC complaining that UDP should be used with T
 <p>I did a very simple comparison using the default <a href="http://www.karlrunge.com/x11vnc/" title="x11vnc a VNC server for real X displays">x11vnc</a> settings and <a href="http://remmina.sourceforge.net" title="Remmina VNC client">Remmina</a>.</p>
 
 <p><strong>Latency:</strong>
-VNC session latency was in the order of milliseconds while VLC was on the order of seconds</p>
+VNC session latency was in the order of milliseconds while VLC was on the order of seconds for most scenarios.</p>
 
 <p><strong>Bandwidth:</strong>
 VNC used as much as 32 mbit/s for bandwidth in high content settings and around 30 kbits/s on static content. VLC streaming never got past 5 mbit/s (remember it was constrained to 5 fps), but static content might take 1 mbit/s or more depending on the codec &ndash; there&rsquo;s the option to use UDP multicast if the network allows for it.</p>
@@ -154,7 +154,13 @@ VNC allows for password and/or certificate authentication. VLC streaming provide
 
 <p>Remember that VNC can use better compression algorithms and both server and client can limit the color depth to limit bandwidth usage. This means each client can be configured in a way to make better use of the available network &ndash; of course, the server must be able to support the client settings.</p>
 
-<p>Those tests were all run in a private wifi network. I intent to do some testing over slower networks to compare VNC sharing and VLC streamming in terms of quality and reliability, keep posted.</p>
+<h2>Future</h2>
+
+<p>Those tests were all run in a private wifi network. I intent to do some testing over slower networks to compare VNC sharing and VLC streamming in terms of quality and reliability.</p>
+
+<p>I have also been playing with ffmpeg directly and results are even better than VLC.</p>
+
+<p>Keep posted.</p>
 
 <hr />
 
