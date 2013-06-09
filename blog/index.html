@@ -9,7 +9,7 @@
   <meta name="author" content="Tiago Stürmer Daitx">
 
   
-  <meta name="description" content="Compared to VLC, desktop streaming through ffmpeg allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I &hellip;">
+  <meta name="description" content="Compared to VLC, desktop streaming through FFmpeg allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +82,7 @@
     <article class="post">
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/">Desktop Streaming With Ffmpeg for Lower Latency</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/">Desktop Streaming With FFmpeg for Lower Latency</a></h1>
     
     
       <p class="meta">
@@ -107,15 +107,52 @@
   </header>
 
 
-  <div class="entry-content"><p>Compared to <a href="/blog/2013/06/07/desktop-streaming-with-vlc/" title="Desktop streaming with VLC">VLC</a>, desktop streaming through <a href="http://www.ffmpeg.org/" title="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.">ffmpeg</a> allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I also had to rely on <a href="http://ffmpeg.org/ffplay.html" title="FFplay is a very simple and portable media player using the FFmpeg libraries and the SDL library.">ffplay</a> instead of <a href="http://www.videolan.org/vlc/" title="VLC media player">VLC</a> as a client.</p>
+  <div class="entry-content"><p>Compared to <a href="/blog/2013/06/07/desktop-streaming-with-vlc/" title="Desktop streaming with VLC">VLC</a>, desktop streaming through <a href="http://www.ffmpeg.org/" title="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.">FFmpeg</a> allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I also had to rely on <a href="http://ffmpeg.org/ffplay.html" title="FFplay is a very simple and portable media player using the FFmpeg libraries and the SDL library.">FFplay</a> instead of <a href="http://www.videolan.org/vlc/" title="VLC media player">VLC</a> as a client.</p>
 
 <h2>tl;dr</h2>
 
-<hr />
+<p>For smallest possible latency:</p>
 
-<h4>References</h4>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ffmpeg -f x11grab -s 1600x900 -r 50 -vcodec mpeg2video -b:v 8000 -f mpegts udp://192.168.0.10:1234</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using rtp gives second best latency</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ffmpeg -f x11grab -s 1600x900 -r 50 -vcodec mpeg2video -b:v 8000 -f rtp rtp://192.168.0.10:1234</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Much higher quality with a bit higher latency:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ffmpeg -f x11grab -s 1600x900 -r 50 -vcodec libx264 -preset ultrafast -tune zerolatency -crf 18 -f mpegts udp://localhost:1234</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For lowest CPU usage and even higher latency (screen rate reduced to 5 fps):</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ffmpeg -f x11grab -s 1600x900 -r 5 -vcodec libx264 -preset ultrafast -tune zerolatency -crf 18 -f mpegts udp://localhost:1234</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For Windows use <code>dshow</code> instead of <code>x11grab</code> (that&rsquo;s from [examples][ I saw, I didn&rsquo;t actually test it).</p>
+
+<p>Remember to replace 1600x900 with your own screen resolution &ndash; on Linux <code>xrandr</code> is a handy way to figure that out.</p>
+
+<p>On the client side run <code>ffplay udp://192.168.0.10:1234</code>.</p>
+
+<h2>Motivation</h2>
+
+<p>As in the <a href="/blog/2013/06/07/desktop-streaming-with-vlc/" title="Desktop streaming with VLC">previous article</a> I&rsquo;m looking for a way to share my desktop (read-only) with a broader audience. I was particularly interested in seeing how fast I could push it, given the reports I have read about very low latency streaming.</p>
+
+<p>Keep reading for the full report.</p>
+
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/">Read on &rarr;</a>
+    </footer>
   
 
 </article>
