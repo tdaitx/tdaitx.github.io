@@ -4,7 +4,7 @@
   <title><![CDATA[WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-09T17:52:15-03:00</updated>
+  <updated>2013-06-09T17:56:00-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -276,7 +276,7 @@ VNC allows for password and/or certificate authentication. VLC streaming provide
 
 <p>Those tests were all run in a private wifi network. I intent to do some testing over slower networks to compare VNC sharing and VLC streamming in terms of quality and reliability.</p>
 
-<p>I have also been playing with ffmpeg directly and results are even better than VLC.</p>
+<p>I have also been playing with ffmpeg directly and results are even better than VLC. <strong>Update:</strong> see <a href="http://www.waitwut.info/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/" title="Desktop streaming with FFmpeg for lower latency">Desktop streaming with FFmpeg for lower latency</a></p>
 
 <p>Keep posted.</p>
 
