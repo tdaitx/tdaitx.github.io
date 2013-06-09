@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VLC | WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/blog/categories/vlc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-09T13:56:33-03:00</updated>
+  <updated>2013-06-09T15:43:31-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Desktop streaming with ffmpeg for lower latency]]></title>
+    <link href="http://www.waitwut.info/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/"/>
+    <updated>2013-06-09T15:22:00-03:00</updated>
+    <id>http://www.waitwut.info/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency</id>
+    <content type="html"><![CDATA[<p>Compared to <a href="/blog/2013/06/07/desktop-streaming-with-vlc/" title="Desktop streaming with VLC">VLC</a>, desktop streaming through <a href="http://www.ffmpeg.org/" title="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.">ffmpeg</a> allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I also had to rely on <a href="http://ffmpeg.org/ffplay.html" title="FFplay is a very simple and portable media player using the FFmpeg libraries and the SDL library.">ffplay</a> instead of <a href="http://www.videolan.org/vlc/" title="VLC media player">VLC</a> as a client.</p>
+
+<h2>tl;dr</h2>
+
+<hr />
+
+<h4>References</h4>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Desktop streaming with VLC]]></title>
@@ -26,7 +41,7 @@
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=25 &mdash;live-caching=10 &mdash;sout &ldquo;#transcode{vcoded=mp2v,vb=256,fps=25,acodec=none}:std{access=udp{caching=10},mux=raw,dst=192.168.0.10:1234}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>On the client side run <code>vlc udp://@:1234/stream</code>.</p>
+<p>On the client side run <code>vlc udp://@:1234</code>.</p>
 
 <p>For lowest CPU usage:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>

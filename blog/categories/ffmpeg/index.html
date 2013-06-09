@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>WAITWUT?!?</title>
+  <title>Category: ffmpeg - WAITWUT?!?</title>
   <meta name="author" content="Tiago Stürmer Daitx">
 
   
-  <meta name="description" content="Compared to VLC, desktop streaming through ffmpeg allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I &hellip;">
+  <meta name="description" content="Category: ffmpeg">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.waitwut.info/">
+  <link rel="canonical" href="http://www.waitwut.infoblog/categories/ffmpeg/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
    <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -76,126 +76,40 @@
 </nav> -->
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/">Desktop Streaming With Ffmpeg for Lower Latency</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-09T15:22:00-03:00" pubdate data-updated="true">2013-06-09</time>
-        
-         | <a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/#disqus_thread">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Category: Ffmpeg</h1>
     
   </header>
-
-
-  <div class="entry-content"><p>Compared to <a href="/blog/2013/06/07/desktop-streaming-with-vlc/" title="Desktop streaming with VLC">VLC</a>, desktop streaming through <a href="http://www.ffmpeg.org/" title="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.">ffmpeg</a> allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I also had to rely on <a href="http://ffmpeg.org/ffplay.html" title="FFplay is a very simple and portable media player using the FFmpeg libraries and the SDL library.">ffplay</a> instead of <a href="http://www.videolan.org/vlc/" title="VLC media player">VLC</a> as a client.</p>
-
-<h2>tl;dr</h2>
-
-<hr />
-
-<h4>References</h4>
-</div>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/06/07/desktop-streaming-with-vlc/">Desktop Streaming With VLC</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2013</h2>
+
+<article>
+  
+<h1><a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/">Desktop streaming with ffmpeg for lower latency</a></h1>
+<time datetime="2013-06-09T15:22:00-03:00" pubdate><span class='month'>Jun</span> <span class='day'>09</span> <span class='year'>2013</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/desktop-streaming/'>Desktop streaming</a>, <a class='category' href='/blog/categories/vlc/'>VLC</a>, <a class='category' href='/blog/categories/ffmpeg/'>ffmpeg</a></span>
+</footer>
 
 
-<time datetime="2013-06-07T17:45:00-03:00" pubdate data-updated="true">2013-06-07</time>
-        
-         | <a href="/blog/2013/06/07/desktop-streaming-with-vlc/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Stream your desktop with VLC using the command line.</p>
-
-<h2>tl;dr</h2>
-
-<p>For smallest possible latency:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=25 --live-caching=10 --sout "#transcode{vcoded=mp2v,vb=256,fps=25,acodec=none}:std{access=udp{caching=10},mux=raw,dst=192.168.0.10:1234}"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>On the client side run <code>vlc udp://@:1234</code>.</p>
-
-<p>For lowest CPU usage:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{preset=ultrafast,tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
-
-
-<p>On the client side run <code>vlc http://&lt;host&gt;:8080/stream</code></p>
-
-<h2>Motivation</h2>
-
-<p>While investigating ways to share my desktop for remote presentations I found out that VLC is able to stream my desktop. I figured out that it might be a good alternative to read-only VNC sessions for some settings and got into testing it in my local network. I also did a simple comparison of it against <a href="http://www.karlrunge.com/x11vnc/" title="x11vnc a VNC server for real X displays">x11vnc</a>.</p>
-
-<p>Now, some VLC setup.</p>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/06/07/desktop-streaming-with-vlc/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
   
-  <div class="pagination">
-    
-    <a href="archives">Blog Archives</a>
-    
-  </div>
+</article>
+
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -226,7 +140,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/tdaitx">@tdaitx</a> on GitHub
@@ -267,6 +181,7 @@
 
   
 </aside>
+
 
     </div>
   </div>

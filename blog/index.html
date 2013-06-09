@@ -9,8 +9,7 @@
   <meta name="author" content="Tiago Stürmer Daitx">
 
   
-  <meta name="description" content="Stream your desktop with VLC using the command line. tl;dr For smallest possible latency: 1
-$ cvlc screen:// --screen-fps=25 --live-caching=10 --sout &hellip;">
+  <meta name="description" content="Compared to VLC, desktop streaming through ffmpeg allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,48 @@ $ cvlc screen:// --screen-fps=25 --live-caching=10 --sout &hellip;">
     <article class="post">
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/">Desktop Streaming With Ffmpeg for Lower Latency</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-09T15:22:00-03:00" pubdate data-updated="true">2013-06-09</time>
+        
+         | <a href="/blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Compared to <a href="/blog/2013/06/07/desktop-streaming-with-vlc/" title="Desktop streaming with VLC">VLC</a>, desktop streaming through <a href="http://www.ffmpeg.org/" title="FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.">ffmpeg</a> allowed me to reduce latency to a minimum, usually less than a second. To achieve such latencies I also had to rely on <a href="http://ffmpeg.org/ffplay.html" title="FFplay is a very simple and portable media player using the FFmpeg libraries and the SDL library.">ffplay</a> instead of <a href="http://www.videolan.org/vlc/" title="VLC media player">VLC</a> as a client.</p>
+
+<h2>tl;dr</h2>
+
+<hr />
+
+<h4>References</h4>
+</div>
+  
+  
+
+</article>
+
+
+    <article class="post">
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/06/07/desktop-streaming-with-vlc/">Desktop Streaming With VLC</a></h1>
     
     
@@ -118,7 +159,7 @@ $ cvlc screen:// --screen-fps=25 --live-caching=10 --sout &hellip;">
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=25 --live-caching=10 --sout "#transcode{vcoded=mp2v,vb=256,fps=25,acodec=none}:std{access=udp{caching=10},mux=raw,dst=192.168.0.10:1234}"</span></code></pre></td></tr></table></div></figure>
 
 
-<p>On the client side run <code>vlc udp://@:1234/stream</code>.</p>
+<p>On the client side run <code>vlc udp://@:1234</code>.</p>
 
 <p>For lowest CPU usage:</p>
 

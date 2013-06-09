@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VNC | WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/blog/categories/vnc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-09T13:56:33-03:00</updated>
+  <updated>2013-06-09T15:43:31-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -26,7 +26,7 @@
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// &mdash;screen-fps=25 &mdash;live-caching=10 &mdash;sout &ldquo;#transcode{vcoded=mp2v,vb=256,fps=25,acodec=none}:std{access=udp{caching=10},mux=raw,dst=192.168.0.10:1234}&rdquo;</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<p>On the client side run <code>vlc udp://@:1234/stream</code>.</p>
+<p>On the client side run <code>vlc udp://@:1234</code>.</p>
 
 <p>For lowest CPU usage:
 <div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
