@@ -142,7 +142,7 @@ Remember that VNC can use better compression algorithms and both server and clie
 ## Future ##
 Those tests were all run in a private wifi network. I intent to do some testing over slower networks to compare VNC sharing and VLC streamming in terms of quality and reliability.
 
-I have also been playing with ffmpeg directly and results are even better than VLC.
+I have also been playing with ffmpeg directly and results are even better than VLC. **Update:** see [Desktop streaming with FFmpeg for lower latency][desktop streaming with ffmpeg]
 
 Keep posted.
 
@@ -153,6 +153,7 @@ I first found about desktop streaming using VLC in [lnostdal's blog](http://blog
 
 [My original post on Google+](https://plus.google.com/109931565080058432516/posts/hrUGwzJ6UNt) and a nice guide for [desktop streaming using VLC GUI wizard](http://grok.lsu.edu/article.aspx?articleid=14625) posted not long ago.
 
+[desktop streaming with ffmpeg]: /blog/2013/06/09/desktop-streaming-with-ffmpeg-for-lower-latency/ "Desktop streaming with FFmpeg for lower latency"
 [x11vnc]: http://www.karlrunge.com/x11vnc/ "x11vnc a VNC server for real X displays"
 [remmina]: http://remmina.sourceforge.net "Remmina VNC client"
 [novnc]: http://kanaka.github.io/noVNC/‎ "HTML5 VNC Client"
