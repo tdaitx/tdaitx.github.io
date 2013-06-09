@@ -9,7 +9,8 @@
   <meta name="author" content="Tiago Stürmer Daitx">
 
   
-  <meta name="description" content="Stream your desktop with VLC using the command line. tl;dr On the server side execute the following for a HTTP streaming using x264 with no audio: 1 &hellip;">
+  <meta name="description" content="Stream your desktop with VLC using the command line. tl;dr For smallest possible latency: 1
+$ cvlc screen:// --screen-fps=25 --live-caching=10 --sout &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -111,17 +112,21 @@
 
 <h2>tl;dr</h2>
 
-<p>On the server side execute the following for a HTTP streaming using x264 with no audio:</p>
+<p>For smallest possible latency:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=25 --live-caching=10 --sout "#transcode{vcoded=mp2v,vb=256,fps=25,acodec=none}:std{access=udp{caching=10},mux=raw,dst=192.168.0.10:1234}"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On the client side run <code>vlc udp://@:1234/stream</code>.</p>
+
+<p>For lowest CPU usage:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>$ cvlc screen:// --screen-fps=5 --live-caching=100 --sout "#transcode{venc=x264{tune=zerolatency,qp=10,nr=1000},vcodec=x264,vb=100,fps=5,acodec=none}:std{access=http,mux=ts,dst=/stream}"</span></code></pre></td></tr></table></div></figure>
 
 
-<p>On the client side watch the stream using:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ vlc http://&lt;host>:8080/stream</span></code></pre></td></tr></table></div></figure>
-
+<p>On the client side run <code>vlc http://&lt;host&gt;:8080/stream</code></p>
 
 <h2>Motivation</h2>
 
