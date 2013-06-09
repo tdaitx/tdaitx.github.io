@@ -162,12 +162,6 @@ $ cvlc screen:// --screen-fps=25 --live-caching=10 --sout &hellip;">
 
 <p>The protocol also affects how much latency you get. In my tests HTTP was slower than UDP by at least 2 seconds. UDP also allows the server to configure caching, with enables really slow latency when combined with the right codec and muxer.</p>
 
-<h3>Actual latency</h3>
-
-<p>The fastest latency I was able to achieve was with mp2v using UDP and the RAW muxer, server caching was set to</p>
-
-<p>x264 codec with the ultrafast preset Using a VLC client with 100 ms of cache I got ~3 seconds delay (using UDP) or ~5 seconds (using HTTP) on the desktop output in a private lan for x264 codec. Good enough for most presentations.</p>
-
 <h2>VLC server codecs</h2>
 
 <p>I tested 4 video codecs: x264, mp4v, mp2v, and mp1v.</p>

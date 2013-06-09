@@ -4,7 +4,7 @@
   <title><![CDATA[Category: VNC | WAITWUT?!?]]></title>
   <link href="http://www.waitwut.info/blog/categories/vnc/atom.xml" rel="self"/>
   <link href="http://www.waitwut.info/"/>
-  <updated>2013-06-08T23:47:12-03:00</updated>
+  <updated>2013-06-09T13:35:45-03:00</updated>
   <id>http://www.waitwut.info/</id>
   <author>
     <name><![CDATA[Tiago Stürmer Daitx]]></name>
@@ -68,12 +68,6 @@
 <p>Muxing also introduces latency. The TS muxer is the usual choice for network streaming, since it was build to be resilient to data loss. The problem is that it introduces (at least) around 1-2 seconds of latency. The other option is to use the RAW muxer, but only few codecs support that: according to the <a href="https://www.videolan.org/streaming-features.html" title="Streaming features list: video, audio, muxing, transport">VLC streaming features</a> it is supposed to work with mp1v, mp2v, and mp4v. I was only ble to get mp1v and mp2v working with it, mp4v did not work.</p>
 
 <p>The protocol also affects how much latency you get. In my tests HTTP was slower than UDP by at least 2 seconds. UDP also allows the server to configure caching, with enables really slow latency when combined with the right codec and muxer.</p>
-
-<h3>Actual latency</h3>
-
-<p>The fastest latency I was able to achieve was with mp2v using UDP and the RAW muxer, server caching was set to</p>
-
-<p>x264 codec with the ultrafast preset Using a VLC client with 100 ms of cache I got ~3 seconds delay (using UDP) or ~5 seconds (using HTTP) on the desktop output in a private lan for x264 codec. Good enough for most presentations.</p>
 
 <h2>VLC server codecs</h2>
 
